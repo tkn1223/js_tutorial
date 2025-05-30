@@ -1,3 +1,7 @@
 #!/home/tkn1223/.nodebrew/current/bin/node
 
-console.log("hello, world!")
+let firstName = "Furuya";
+let lastName = "Takahiro";
+
+console.log(firstName, lastName);
+console.log(`${firstName}`);
