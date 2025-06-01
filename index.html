@@ -3,11 +3,10 @@
     <head>
         <title>JavaScriptを学ぼう</title>
         <meta charset="utf-8">
+        <script src="palindrome.js"></script>
         <script>
-            const daysOfTheWeek = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
-            let now = new Date();
-            let dayName = daysOfTheWeek[now.getDay()];
-            alert(`素敵な${dayName}になりますように！`);
+            const name = prompt("文章を入力してね");
+            alert(palindrome(name));
         </script>
     </head>
     <body>
