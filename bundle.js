@@ -1,14 +1,17 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-function palindromeTester() {
-    let Phrase = require("furuya-palindrome");
+let Phrase = require("furuya-palindrome");
 
-    let string = prompt("パリンドロームをテストしたい文字列を入力して下さい：");
-    let phrase = new Phrase(string);
+function palindromeTester(event) {
+    // フォームのデフォルトの振る舞いを止める（画面のロードを止める）
+    event.preventDefault();
+    
+    let phrase = new Phrase(event.target.phrase.value);
+    let palindromeResult = document.querySelector("#palindromeResult");
 
     if (phrase.palindrome()) {
-        alert(`"${phrase.content}"はパリンドロームです`)
+        palindromeResult.innerHTML = `"${phrase.content}"はパリンドロームです`;
     } else {
-        alert(`"${phrase.content}"はパリンドロームではありません`)
+        palindromeResult.innerHTML = `"${phrase.content}"はパリンドロームではありません`;
     }
 }
 
@@ -16,8 +19,8 @@ function palindromeTester() {
 document.addEventListener("DOMContentLoaded", () => {
     // 読み込まれてからidが一致するエレメントを探す
     let form = document.querySelector("#palindromeTester");
-    form.addEventListener("submit", () => {
-        palindromeTester();
+    form.addEventListener("submit", (event) => {
+        palindromeTester(event);
     });
 });
 },{"furuya-palindrome":2}],2:[function(require,module,exports){

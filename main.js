@@ -1,13 +1,16 @@
-function palindromeTester() {
-    let Phrase = require("furuya-palindrome");
+let Phrase = require("furuya-palindrome");
 
-    let string = prompt("パリンドロームをテストしたい文字列を入力して下さい：");
-    let phrase = new Phrase(string);
+function palindromeTester(event) {
+    // フォームのデフォルトの振る舞いを止める（画面のロードを止める）
+    event.preventDefault();
+    
+    let phrase = new Phrase(event.target.phrase.value);
+    let palindromeResult = document.querySelector("#palindromeResult");
 
     if (phrase.palindrome()) {
-        alert(`"${phrase.content}"はパリンドロームです`)
+        palindromeResult.innerHTML = `"${phrase.content}"はパリンドロームです`;
     } else {
-        alert(`"${phrase.content}"はパリンドロームではありません`)
+        palindromeResult.innerHTML = `"${phrase.content}"はパリンドロームではありません`;
     }
 }
 
@@ -15,7 +18,7 @@ function palindromeTester() {
 document.addEventListener("DOMContentLoaded", () => {
     // 読み込まれてからidが一致するエレメントを探す
     let form = document.querySelector("#palindromeTester");
-    form.addEventListener("submit", () => {
-        palindromeTester();
+    form.addEventListener("submit", (event) => {
+        palindromeTester(event);
     });
 });
