@@ -15,8 +15,8 @@ function palindromeTester() {
 // htmlが読み込まれるまで待機する
 document.addEventListener("DOMContentLoaded", () => {
     // 読み込まれてからidが一致するエレメントを探す
-    let button = document.querySelector("#palindromeTester");
-    button.addEventListener("click", () => {
+    let form = document.querySelector("#palindromeTester");
+    form.addEventListener("submit", () => {
         palindromeTester();
     });
 });
